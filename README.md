@@ -1,5 +1,5 @@
 # sql-challenge
-This project analyzes data using SQL about team members of a fictitious company employed during the 1980s and 1990s. Employment records provided in the form of six CSV files. 
+Using SQL, this project analyzes data about team members of a fictitious company employed during the 1980s and 1990s. Employment records provided in the form of six CSV files. 
 
 First, an ERD was created to map the schemas of the database. Then, tables were created to hold the data from the CSV files, data was imported from the CSV files into the  database, and SQL queries were created to respond to research questions about the data. 
 
