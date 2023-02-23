@@ -1,0 +1,88 @@
+--Use Six CSV files provided in "data" directory to create six tables
+
+--ONE: Create Table for departments.csv
+CREATE TABLE departments (
+    dept_no VARCHAR(4) NOT NULL PRIMARY KEY, --will be used in dept_emp and employees tables as a foreign key
+    dept_name VARCHAR(30) NOT NULL 
+);
+
+--------------------------------------------------------------------------------------
+--TWO: Create Table for titles.csv
+CREATE TABLE titles (
+    title_id VARCHAR(5) NOT NULL PRIMARY KEY, --will be used in employees table as foreign key
+    title VARCHAR(30) NOT NULL 
+);
+
+--------------------------------------------------------------------------------------
+--THREE: Create Table for employees.csv
+CREATE TABLE employees (
+    emp_no INT NOT NULL PRIMARY KEY, --used several times as foreign key
+    title_id VARCHAR(5) NOT NULL,
+    birth_date DATE NOT NULL,
+    first_name VARCHAR (30) NOT NULL,
+    last_name VARCHAR (30) NOT NULL,
+    sex VARCHAR (1) NOT NULL,
+    hire_date DATE NOT NULL,
+    FOREIGN KEY (title_id) REFERENCES titles(title_id) 
+);
+
+
+--------------------------------------------------------------------------------------
+--FOUR: Create Table for salaries.csv
+CREATE TABLE salaries (
+    emp_no INT, 
+    salary INT,
+    FOREIGN KEY (emp_no) REFERENCES employees(emp_no) 
+);
+
+--------------------------------------------------------------------------------------
+--FIVE: Create Table for dept_emp.csv
+CREATE TABLE dept_emp (
+    emp_no INT, 
+    dept_no VARCHAR(4),
+    FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
+    FOREIGN KEY (dept_no) REFERENCES departments(dept_no)  
+);
+
+ALTER TABLE dept_emp
+ADD
+	id_emp_dept_join SERIAL PRIMARY KEY; 
+
+--------------------------------------------------------------------------------------
+--SIX: Create Table for dept_manager.csv
+CREATE TABLE dept_manager (
+	dept_no VARCHAR,
+	emp_no INT, 
+    FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
+    FOREIGN KEY (dept_no) REFERENCES departments(dept_no)  
+);
+
+INSERT INTO dept_manager (dept_no, emp_no) 
+VALUES ('d001',110022),
+('d001'	,110039),
+('d002'	,110085),
+('d002'	,110114),
+('d003'	,110183),
+('d003'	,110228),
+('d004'	,110303),
+('d004'	,110344),
+('d004'	,110386),
+('d004'	,110420),
+('d005'	,110511),
+('d005'	,110567),
+('d006'	,110725),
+('d006'	,110765),
+('d006'	,110800),
+('d006'	,110854),
+('d007'	,111035),
+('d007'	,111133),
+('d008'	,111400),
+('d008'	,111534),
+('d009'	,111692),
+('d009'	,111784),
+('d009'	,111877),
+('d009'	,111939);
+
+ALTER TABLE dept_manager
+ADD
+	mngr_id SERIAL PRIMARY KEY;
