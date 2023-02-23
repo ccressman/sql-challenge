@@ -21,3 +21,7 @@ The research questions are as follows:
 7. List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
 8. List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+
+
+The below ERD was created using https://app.quickdatabasediagrams.com/#/
+![image](https://user-images.githubusercontent.com/119253324/220819622-fa8ee640-3481-4681-a4ca-88428eaa95f4.png)
